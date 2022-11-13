@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:http/http.dart' as http;
 import 'package:search_github_repository/model/github_repository.dart';
+import 'package:search_github_repository/view_model/search_repository_view_model.dart';
 
 final searchRepositoryApiClient =
     Provider(((ref) => SearchRepositoryApiClient(ref)));
@@ -25,8 +26,10 @@ class SearchRepositoryApiClient {
 
       for (var item in itemList) {
         githubRepositoiesList.add(GithubRepository.fromJson(item));
+        ref.read(apiStatusState.notifier).state = ApiStatus.ok;
       }
     } else {
+      ref.read(apiStatusState.notifier).state = ApiStatus.error;
     }
     return githubRepositoiesList;
   }
