@@ -4,16 +4,16 @@ import 'package:search_github_repository/model/github_repository.dart';
 
 
 final searchRepositoryViewModel =
-    Provider((ref) => SearchRepositoryScreenViewModel(ref));
+    Provider((ref) => SearchRepositoryViewModel(ref));
 
 final githubRepositoryListState =
     StateProvider<List<GithubRepository>>((ref) => []);
 final searchTextState = StateProvider<String>(((ref) => ''));
 
 
-class SearchRepositoryScreenViewModel {
+class SearchRepositoryViewModel {
   final Ref ref;
-  SearchRepositoryScreenViewModel(this.ref);
+  SearchRepositoryViewModel(this.ref);
 
   Future<void> reserchRepository(String query) async {
     final repositoryList =
