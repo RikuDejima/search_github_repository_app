@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_github_repository/view_model/search_repository_view_model.dart';
 
-class SerchRepositoryScreen extends HookConsumerWidget {
+class SearchRepositoryScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
@@ -67,12 +67,35 @@ class SerchRepositoryScreen extends HookConsumerWidget {
             },
             onSubmitted: (value) {
               if (value.isNotEmpty) {
-                ref
-                    .read(searchRepositoryViewModel)
-                    .reserchRepository(value);
+                ref.read(searchRepositoryViewModel).reserchRepository(value);
               }
             },
           ),
+        ),
+      ),
+      body: Center(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: ListView(
+                children: [
+                  ...repositoryList
+                      .map(
+                        (repo) => ListTile(
+                          onTap: () {},
+                          title: Text(
+                            repo.name,
+                            style: theme.textTheme.displayMedium,
+                          ),
+                          trailing: Icon(Icons.arrow_forward_ios),
+                        ),
+                      )
+                      .toList(),
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );

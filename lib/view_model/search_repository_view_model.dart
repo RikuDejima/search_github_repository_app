@@ -9,7 +9,7 @@ final searchRepositoryViewModel =
 final githubRepositoryListState =
     StateProvider<List<GithubRepository>>((ref) => []);
 final searchTextState = StateProvider<String>(((ref) => ''));
-
+final selectedRepositoryState = StateProvider<GithubRepository?>(((ref) => null));
 
 class SearchRepositoryScreenViewModel {
   final Ref ref;
