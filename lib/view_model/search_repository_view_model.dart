@@ -11,6 +11,15 @@ final githubRepositoryListState =
 final searchTextState = StateProvider<String>(((ref) => ''));
 final selectedRepositoryState = StateProvider<GithubRepository?>(((ref) => null));
 
+enum ApiStatus {
+  none,
+  ok,
+  error,
+}
+
+// errorになったときにダイアログを出す
+final apiStatusState = StateProvider<ApiStatus>(((ref) => ApiStatus.none));
+
 class SearchRepositoryScreenViewModel {
   final Ref ref;
   SearchRepositoryScreenViewModel(this.ref);

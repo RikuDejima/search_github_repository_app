@@ -8,6 +8,7 @@ class SearchRepositoryScreen extends HookConsumerWidget {
     final theme = Theme.of(context);
     final repositoryList = ref.watch(githubRepositoryListState);
     final searchText = ref.watch(searchTextState);
+    final apiStatus = ref.watch(apiStatusState);
 
     return Scaffold(
       appBar: AppBar(
@@ -74,7 +75,26 @@ class SearchRepositoryScreen extends HookConsumerWidget {
         ),
       ),
       body: Center(
-        child: Column(
+        child: apiStatus == ApiStatus.error
+            ? AlertDialog(
+                backgroundColor: theme.backgroundColor,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(30))),
+                elevation: 10,
+                title: Text(
+                  'エラーが発生しました',
+                  style: theme.textTheme.titleMedium,
+                ),
+                actions: <Widget>[
+                  TextButton(
+                    child: const Text('Approve'),
+                    onPressed: () {
+                      ref.read(apiStatusState.notifier).state = ApiStatus.none;
+                    },
+                  ),
+                ],
+              )
+            : Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
