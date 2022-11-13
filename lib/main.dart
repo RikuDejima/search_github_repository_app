@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:search_github_repository/view/search_repository_screen.dart';
+import 'package:search_github_repository/view/repository_detail_screen.dart';
 
 void main() {
   runApp(ProviderScope(child: MyApp()));
@@ -12,6 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         '/': (context) => SearchRepositoryScreen(),
+        '/repository_detail': (context) => RepositoryDetailScreen(),
       },
       theme: ThemeData(
         backgroundColor: Colors.white,

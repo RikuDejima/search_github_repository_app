@@ -95,28 +95,34 @@ class SearchRepositoryScreen extends HookConsumerWidget {
                 ],
               )
             : Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: ListView(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ...repositoryList
-                      .map(
-                        (repo) => ListTile(
-                          onTap: () {},
-                          title: Text(
-                            repo.name,
-                            style: theme.textTheme.displayMedium,
-                          ),
-                          trailing: Icon(Icons.arrow_forward_ios),
-                        ),
-                      )
-                      .toList(),
+                  Expanded(
+                    child: ListView(
+                      children: [
+                        ...repositoryList
+                            .map(
+                              (repo) => ListTile(
+                                onTap: () {
+                                  ref
+                                      .read(selectedRepositoryState.notifier)
+                                      .state = repo;
+                                  Navigator.of(context)
+                                      .pushNamed('/repository_detail');
+                                },
+                                title: Text(
+                                  repo.name,
+                                  style: theme.textTheme.displayMedium,
+                                ),
+                                trailing: Icon(Icons.arrow_forward_ios),
+                              ),
+                            )
+                            .toList(),
+                      ],
+                    ),
+                  )
                 ],
               ),
-            )
-          ],
-        ),
       ),
     );
   }
