@@ -1,11 +1,13 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
-final reserchRepositoriesApiClient =
-    Provider(((ref) => ReserchRepositoriesApiClient(ref)));
+final searchRepositoryApiClient =
+    Provider(((ref) => SearchRepositoryApiClient(ref)));
 
-class ReserchRepositoriesApiClient {
+class SearchRepositoryApiClient {
   final Ref ref;
-  ReserchRepositoriesApiClient(this.ref);
+  SearchRepositoryApiClient(this.ref);
 
-  getRepositories(String query) async {}
+  getRepositories(String query) async {
+    
+  }
 }
