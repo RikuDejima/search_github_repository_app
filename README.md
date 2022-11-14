@@ -1,5 +1,5 @@
 # search_github_repository
-Giothub APIを使用した、リポジトリ検索アプリ
+Github APIを使用した、リポジトリ検索アプリ
 
 ## Getting Started
 
